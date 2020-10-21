@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ListTitle = () => {
     return (
@@ -7,20 +7,20 @@ const ListTitle = () => {
 }
 
 const List = () => {
+    const initialTodos  = ["Teach Tailwindcss",  "Teach Symfony", "Maybe teach React"];
+    const [todos, setTodos] = useState(initialTodos);
+    
     return (
         <ul >
-            <li >
-                <label className="md:w-2/3 block text-gray-500 font-bold" >
-                    <input className="mr-2 leading-tight" type="checkbox" />
-                    <span className="text-sm" >Teach Symfony</span >
-                </label >
-            </li >
-            <li >
-                <label className="md:w-2/3 block text-gray-500 font-bold" >
-                    <input className="mr-2 leading-tight" type="checkbox" />
-                    <span className="text-sm" >Send newsletter</span >
-                </label >
-            </li >
+            {todos.map((todo) => (
+                <li>
+                    <label className="md:w-2/3 block text-gray-500 font-bold" >
+                        <input className="mr-2 leading-tight" type="checkbox" />
+                        <span className="text-sm" >{todo}</span >
+                    </label >
+
+                </li>
+            ))}
         </ul >
     )
 }
