@@ -1,11 +1,11 @@
 import React from "react";
+import logo from "./logo.svg";
 
-function Header() {
+export default function Header() {
     return (
-        <header className="flex items-center justify-between flex-wrap bg-blue-300 p-6" >
-            My Todo App
+        <header className="App-header flex items-center justify-between flex-wrap bg-gray-900 p-6" >
+            <img src={logo} className="App-logo" alt="logo" />
+            <p className="text-teal-500">My Todo App</p>
         </header >
     );
 }
-
-export default Header;

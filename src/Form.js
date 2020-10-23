@@ -1,14 +1,29 @@
-import React from "react";
+import React, {useRef} from "react";
 
-function Form(){
+export default function Form() {
+
+    const inputRef = useRef();
+
+    function clickHandler() {
+
+        const name = inputRef.current.value;
+        if (name === '') return;
+        console.log(name);
+        setTodos(prevTodos => {
+            return [...prevTodos, {id: 1, name: name, complete: false}]
+        })
+        inputRef.current.value = '';
+    }
+
     return (
-        <form className="flex items-center justify-between flex-wrap p-6 border-b-2" >
-            <input type="text" id="item" name="item"
+        <div className="flex items-center justify-between flex-wrap p-6 border-b-2" >
+            <input type="text" ref={inputRef} placeholder="Write a new todo"
                    className="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-            <input type="submit" id="submit" value="Submit"
-                   className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" />
-        </form >
+            <button value="Submit" onClick={clickHandler}
+                    className=" form__button hover:bg-blue-500 hover:text-white  hover:border-transparent " >
+                Submit
+            </button >
+        </div >
     );
-};
 
-export default Form;
+}

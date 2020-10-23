@@ -1,37 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
-const ListTitle = () => {
-    return (
-        <h3 className="text-2xl font-bold leading-7 text-gray-900" >Todos</h3 >
-    )
-}
+export default function Section({todos, toggleTodo}) {
 
-const List = () => {
-    const initialTodos  = ["Teach Tailwindcss",  "Teach Symfony", "Maybe teach React"];
-    const [todos, setTodos] = useState(initialTodos);
+    function handleTodoClick(id) {
+        toggleTodo(id);
+    }
 
     return (
-        <ul >
-            {todos.map((todo) => (
-                <li key={todo}>
-                    <label className="md:w-2/3 block text-gray-500 font-bold" >
-                        <input className="mr-2 leading-tight" type="checkbox" />
-                        <span className="text-sm" >{todo}</span >
-                    </label >
-
-                </li>
-            ))}
-        </ul >
+        <>
+            <section className="w-full max-w-sm p-6 " >
+                <h3 className="text-2xl font-bold leading-7 text-gray-900" >Todos</h3 >
+                <ul >
+                    {todos.map((todo) => (
+                        <li key={todo.id} >
+                            <label className="md:w-2/3 block text-gray-500 font-bold" >
+                                <input type="checkbox" checked={todo.complete} onChange={() => handleTodoClick(todo.id)}
+                                       className="mr-2 " />
+                                <span className="text-sm" >{todo.name}</span >
+                            </label >
+                        </li >
+                    ))}
+                </ul >
+            </section >
+        </>
     )
 }
-
-function Section() {
-    return (
-        <section className="p-6 " >
-            <ListTitle />
-            <List />
-        </section >
-    )
-}
-
-export default Section;
