@@ -1,6 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
 // import logo from './logo.svg';
-import './App.css';
 import Header from "./Header";
 // import Form from "./Form";
 import Section from "./Section";
@@ -48,10 +47,12 @@ function App() {
 
     return (
         <>
-            <div className="flex flex-col items-center h-screen bg-grey-300" >
+            <div className="bg-gray-200" >
                 <Header />
 
-                <div>{todos.filter(todo => !todo.complete).length} left to do</div>
+                <div className="w-full max-w-sm p-6 " >
+                    <p >{todos.filter(todo => !todo.complete).length} todo(s) left...</p >
+                </div >
 
                 <div className="flex items-center justify-between flex-wrap p-6 border-b-2" >
                     <input type="text" ref={inputRef} placeholder="Write a new todo"

@@ -9,7 +9,7 @@ export default function Section({todos, toggleTodo}) {
     return (
         <>
             <section className="w-full max-w-sm p-6 " >
-                <h3 className="text-2xl font-bold leading-7 text-gray-900" >Todos</h3 >
+                <h3 className="text-2xl font-bold leading-7 text-blue-700" >Todos</h3 >
                 <ul >
                     {todos.map((todo) => (
                         <li key={todo.id} >
